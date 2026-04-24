@@ -4,12 +4,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 48px;
+  gap: 0;
   padding: 80px 32px 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.greeting {
+  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+  opacity: 0.28;
+  margin-bottom: 28px;
+  animation: fadeUp 700ms ease both;
 }
 
 .header {
   text-align: center;
+  animation: fadeUp 700ms 80ms ease both;
 }
 
 .eyebrow {
@@ -28,30 +41,45 @@
   color: var(--color-text);
 }
 
+.divider {
+  width: 100%;
+  max-width: 1100px;
+  height: 1px;
+  background: rgba(198, 198, 208, 0.07);
+  margin: 36px 0;
+  animation: fadeUp 700ms 140ms ease both;
+}
+
 .week {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 14px;
+  gap: 22px;
   width: 100%;
-  max-width: 840px;
+  max-width: 1100px;
 }
 
 .day {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 3 / 4;
   background: transparent;
   border: 1px solid rgba(198, 198, 208, 0.1);
-  border-radius: 10px;
-  padding: 14px;
+  border-radius: 14px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: border-color 160ms ease, background-color 160ms ease;
   cursor: default;
+  opacity: 0;
+  animation: fadeUp 500ms ease both;
 }
 
 .day:hover {
   border-color: rgba(213, 157, 128, 0.4);
   background: rgba(16, 76, 100, 0.3);
+}
+
+.day:hover .day__number {
+  transform: scale(1.06);
 }
 
 .day__label {
@@ -62,11 +90,13 @@
 }
 
 .day__number {
-  font-size: 32px;
+  font-size: 48px;
   font-weight: 300;
   color: var(--color-text);
   align-self: flex-end;
   line-height: 1;
+  transition: transform 200ms ease;
+  display: block;
 }
 
 .day--today {
@@ -75,25 +105,33 @@
 }
 
 .day--today .day__label {
-  color: var(--color-accent-strong);
+  color: var(--color-text);
 }
 
 .day--today .day__number {
   color: #fff;
-  font-weight: 400;
+  font-weight: 500;
 }
 
-@media (max-width: 680px) {
+@media (max-width: 860px) {
   .week {
     grid-template-columns: repeat(4, 1fr);
     max-width: 100%;
   }
-
   .range {
     font-size: 20px;
   }
-
   .day__number {
-    font-size: 24px;
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .week {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .day__number {
+    font-size: 28px;
   }
 }

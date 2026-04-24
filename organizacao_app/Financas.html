@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organizacao – Finanças</title>
+  <style>
+    :root {
+      --color-bg: #0D1D25;
+      --color-surface: #104C64;
+      --color-text: #C6C6D0;
+      --color-accent-soft: #D59D80;
+      --color-accent-mid: #C0754D;
+      --color-accent-strong: #B6410F;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; }
+
+    /* navbar */
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0A1720;
+      border: 1px solid rgba(198, 198, 208, 0.08);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px;
+      z-index: 100;
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.3),
+        0 1px 2px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(198, 198, 208, 0.04);
+    }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      color: #8FAABB;
+      text-decoration: none;
+      transition: color 180ms ease, background-color 180ms ease;
+    }
+    .nav-link:hover {
+      color: #104C64;
+      background: rgba(16, 76, 100, 0.42);
+      border: 1px solid #104C64;
+    }
+    .nav-link--active,
+    .nav-link--active:hover { color: #C0754D; }
+    .nav-icon { width: 24px; height: 24px; flex-shrink: 0; }
+
+    /* page */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 48px;
+      padding: 80px 32px 32px;
+    }
+
+    .header { text-align: center; }
+
+    .eyebrow {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-accent-soft);
+    }
+
+    .title {
+      margin: 10px 0 0;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      color: var(--color-text);
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <!-- Home -->
+    <a href="Home Redesign.html" aria-label="Início" class="nav-link">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="nav-icon" aria-hidden="true">
+        <!-- corpo da casa -->
+        <path d="M4.5 12.8V20a1 1 0 001 1H9.5v-4.5h5V21H19a1 1 0 001-1v-7.2L12 5.8l-7.5 7z"/>
+        <!-- telhado arredondado e grosso -->
+        <path d="M2.5 13.2L12 4.2l9.5 9" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <!-- Finanças (ativo) -->
+    <a href="Financas.html" aria-label="Finanças" class="nav-link nav-link--active">
+      <svg viewBox="0 0 24 24" class="nav-icon" aria-hidden="true">
+        <defs>
+          <mask id="coin-mask-active">
+            <circle cx="12" cy="12" r="10" fill="white"/>
+            <text x="12" y="16.8" text-anchor="middle"
+              font-family="system-ui, -apple-system, sans-serif"
+              font-size="14" font-weight="900" fill="black">$</text>
+          </mask>
+        </defs>
+        <circle cx="12" cy="12" r="10" fill="currentColor" mask="url(#coin-mask-active)"/>
+      </svg>
+    </a>
+  </nav>
+
+  <main class="page">
+    <header class="header">
+      <span class="eyebrow">finanças</span>
+      <h1 class="title">em breve</h1>
+    </header>
+  </main>
+
+</body>
+</html>

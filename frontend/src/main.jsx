@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './styles/global.css'
 import App from './App.jsx'
 import Home from './pages/Home.jsx'
+import Financas from './pages/Financas.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -11,7 +12,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route element={<App />}>
           <Route index element={<Home />} />
-          {/* futura rota: <Route path="financas" element={<Financas />} /> */}
+          <Route path="financas" element={<Financas />} />
         </Route>
       </Routes>
     </BrowserRouter>

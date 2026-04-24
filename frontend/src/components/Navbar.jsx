@@ -9,24 +9,55 @@ function HomeIcon() {
       className="nav-icon"
       aria-hidden="true"
     >
-      <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
-      <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+      <path d="M4.5 12.8V20a1 1 0 001 1H9.5v-4.5h5V21H19a1 1 0 001-1v-7.2L12 5.8l-7.5 7z" />
+      <path
+        d="M2.5 13.2L12 4.2l9.5 9"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   )
+}
+
+function CoinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" className="nav-icon" aria-hidden="true">
+      <defs>
+        <mask id="coin-mask">
+          <circle cx="12" cy="12" r="10" fill="white" />
+          <text
+            x="12"
+            y="16.8"
+            textAnchor="middle"
+            fontFamily="system-ui, -apple-system, sans-serif"
+            fontSize="14"
+            fontWeight="900"
+            fill="black"
+          >
+            $
+          </text>
+        </mask>
+      </defs>
+      <circle cx="12" cy="12" r="10" fill="currentColor" mask="url(#coin-mask)" />
+    </svg>
+  )
+}
+
+function navLinkClass({ isActive }) {
+  return `nav-link${isActive ? ' nav-link--active' : ''}`
 }
 
 export default function Navbar() {
   return (
     <nav className="navbar">
-      <NavLink
-        to="/"
-        end
-        aria-label="Início"
-        className={({ isActive }) =>
-          `nav-link${isActive ? ' nav-link--active' : ''}`
-        }
-      >
+      <NavLink to="/" end aria-label="Início" className={navLinkClass}>
         <HomeIcon />
+      </NavLink>
+      <NavLink to="/financas" aria-label="Finanças" className={navLinkClass}>
+        <CoinIcon />
       </NavLink>
     </nav>
   )
