@@ -1,5 +1,7 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import '../styles/navbar.css'
+
+const HOME_PATHS = ['/', '/cabelo', '/rosto', '/roupa']
 
 function HomeIcon() {
   return (
@@ -51,9 +53,17 @@ function navLinkClass({ isActive }) {
 }
 
 export default function Navbar() {
+  const { pathname } = useLocation()
+  const homeActive = HOME_PATHS.includes(pathname)
+
   return (
     <nav className="navbar">
-      <NavLink to="/" end aria-label="Início" className={navLinkClass}>
+      <NavLink
+        to="/"
+        end
+        aria-label="Início"
+        className={`nav-link${homeActive ? ' nav-link--active' : ''}`}
+      >
         <HomeIcon />
       </NavLink>
       <NavLink to="/financas" aria-label="Finanças" className={navLinkClass}>
