@@ -12,9 +12,8 @@
   border: 1px solid rgba(198, 198, 208, 0.1);
   border-radius: 14px;
   padding: 20px 16px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: auto 0;
+  position: relative;
+  container-type: inline-size;
   transition:
     border-color 160ms ease,
     background-color 160ms ease;
@@ -28,11 +27,10 @@
   background: rgba(16, 76, 100, 0.3);
 }
 
-.day:hover .day__number {
-  transform: scale(1.06);
-}
-
 .day__label {
+  position: absolute;
+  top: 20px;
+  left: 16px;
   font-size: 10px;
   letter-spacing: 0.2em;
   color: var(--color-accent-soft);
@@ -40,17 +38,23 @@
 }
 
 .day__number {
-  font-size: 48px;
-  font-weight: 300;
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  font-size: 10px;
+  font-weight: 400;
   color: var(--color-text);
-  grid-column: 3;
-  grid-row: 1;
-  align-self: end;
-  justify-self: end;
   line-height: 1;
-  transition:
-    transform 80ms ease-in-out,
-    font-size 900ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  transform-origin: top right;
+  /* compact é o estado base; full empurra pra baixo e escala 4.8× (48px visual) */
+  /* 100cqi × 4/3 = altura do card (via aspect-ratio: 3/4) */
+  transform: translateY(calc(100cqi * 4 / 3 - 38px)) scale(4.8);
+  will-change: transform;
+  transition: transform 3000ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-shell--compact .day__number {
+  transform: translateY(0) scale(1);
 }
 
 .day--today {
@@ -67,20 +71,10 @@
   font-weight: 500;
 }
 
-/* Estado COMPACT — número ao lado do label, mantendo o tamanho do card */
-.home-shell--compact .day__number {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.2em;
-}
-
 @media (max-width: 860px) {
   .week {
     grid-template-columns: repeat(4, 1fr);
     max-width: 100%;
-  }
-  .day__number {
-    font-size: 36px;
   }
 }
 
@@ -88,8 +82,5 @@
   .week {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
-  }
-  .day__number {
-    font-size: 28px;
   }
 }
